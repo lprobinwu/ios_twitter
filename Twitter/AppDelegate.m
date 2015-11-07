@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TwitterClient.h"
+#import "User.h"
+#import "Tweet.h"
 
 @interface AppDelegate ()
 
@@ -47,6 +50,47 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    [[TwitterClient sharedInstance] openURL:url];
+    
+//    [[TwitterClient sharedInstance] fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:[BDBOAuth1Credential credentialWithQueryString:url.query] success:^(BDBOAuth1Credential *accessToken) {
+//        NSLog(@"Got the access token");
+//        
+//        [[TwitterClient sharedInstance].requestSerializer saveAccessToken:accessToken];
+//        
+//        [[TwitterClient sharedInstance] GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//            
+//            User *user = [[User alloc] initWithDictionary:responseObject];
+//            
+//            NSLog(@"Current user: %@", user.name);
+//            
+//            
+//        } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+//            NSLog(@"Failed to get the current user");
+//        }];
+//        
+//        [[TwitterClient sharedInstance] GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//            NSLog(@"Got tweets");
+//            
+//            NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+//            for (Tweet *tweet in tweets) {
+//                NSLog(@"tweet: %@, created: %@", tweet.text, tweet.createdAt);
+//            }
+//            
+//        } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+//            NSLog(@"Failed to get tweets");
+//        }];
+//    } failure:^(NSError *error) {
+//        NSLog(@"Failed to get the access token");
+//    }];
+    
+    return YES;
 }
 
 @end
