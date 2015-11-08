@@ -27,7 +27,8 @@
             // Modally present tweet view
             NSLog(@"Welcome %@", user.name);
             
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
+            UIViewController *vc = [[TweetsViewController alloc] init];
+            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
             
         } else {
             // prevent error view

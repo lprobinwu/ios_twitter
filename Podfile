@@ -4,6 +4,7 @@
 # use_frameworks!
 
 target 'Twitter' do
-pod "BDBOAuth1Manager"
+  pod "BDBOAuth1Manager"
+  pod "AFNetworking"
 end
 

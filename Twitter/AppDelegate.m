@@ -33,7 +33,8 @@
     User *user = [User currentUser];
     if (user != nil) {
         NSLog(@"Welcome %@", user.name);
-        self.window.rootViewController = [[TweetsViewController alloc] init];
+        UIViewController *vc = [[TweetsViewController alloc] init];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
     } else {
         NSLog(@"Not Logged In");
         self.window.rootViewController = [[LoginViewController alloc] init];
