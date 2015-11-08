@@ -27,7 +27,7 @@
         self.title = @"Home";
         [self customizeLeftNavBarButtons];
         [self customizeRightNavBarButtons];
-        [self setUpTableView];
+        
     }
     return self;
 }
@@ -41,9 +41,9 @@
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         if (tweets != nil) {
             self.tweets = tweets;
-            for (Tweet *tweet in tweets) {
-                NSLog(@"tweet: %@, created: %@", tweet.text, tweet.createdAt);
-            }
+//            for (Tweet *tweet in tweets) {
+//                NSLog(@"tweet: %@, created: %@", tweet.text, tweet.createdAt);
+//            }
             [self.tableView reloadData];
         }
     }];
@@ -84,7 +84,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-//    cell.tweet = self.tweets[indexPath.row];
     [cell setTweet:self.tweets[indexPath.row]];
     return cell;
 }
