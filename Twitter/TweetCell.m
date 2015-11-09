@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 
 @end
 
@@ -23,13 +24,17 @@
 - (void) setTweet: (Tweet *)tweet {
     _tweet = tweet;
     NSString *createAtString = [NSDateFormatter localizedStringFromDate:tweet.createdAt
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterShortStyle];
+                                                              dateStyle:NSDateFormatterShortStyle
+                                                              timeStyle:NSDateFormatterNoStyle];
     self.timeLabel.text = createAtString;
     self.tweetLabel.text = tweet.text;
-    self.userNameLabel.text = [NSString stringWithFormat:@"%@", tweet.user.screenname];
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
     [self.tweetLabel sizeToFit];
+    
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@", tweet.user.name];
+    [self.userNameLabel sizeToFit];
+    
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenname];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
 }
 
 - (void)awakeFromNib {
