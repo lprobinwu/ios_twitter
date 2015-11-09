@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation TweetsViewController
@@ -39,16 +41,22 @@
     
     [self setUpTableView];
     
+    [self refreshTweetsWithCompletion:nil];
+}
+
+- (void)refreshTweetsWithCompletion:(void (^)())completion {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         if (tweets != nil) {
             self.tweets = tweets;
-//            for (Tweet *tweet in tweets) {
-//                NSLog(@"tweet: %@, created: %@", tweet.text, tweet.createdAt);
-//            }
             [self.tableView reloadData];
+            
+            if (completion != nil) {
+                completion();
+            }
         }
     }];
 }
+
 
 - (void)customizeLeftNavBarButtons {
     UIBarButtonItem *barButtonItem =
@@ -76,7 +84,22 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
+    
+    [self setUpRefreshControl];
 }
+
+- (void)setUpRefreshControl {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void)onRefresh {
+    [self refreshTweetsWithCompletion:^{
+        [self.refreshControl endRefreshing];
+    }];
+}
+
 
 - (void) logout {
     [User logout];

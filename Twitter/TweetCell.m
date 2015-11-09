@@ -35,6 +35,8 @@
     
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenname];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.cornerRadius = 5;
 }
 
 - (void)awakeFromNib {

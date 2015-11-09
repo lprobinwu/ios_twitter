@@ -46,7 +46,13 @@
                                                               timeStyle:NSDateFormatterShortStyle];
     self.createdAtLabel.text = createAtString;
     
+    // take care of 0 if NSNumber is null.
+    self.numOfRetweetsLabel.text = [self.tweet.retweetCount stringValue];
+    self.numOfLikesLabel.text = [self.tweet.user.favouritesCount stringValue];
+    
     [self.profileImageView setImageWithURL:[NSURL URLWithString:self.tweet.user.profileImageUrl]];
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.cornerRadius = 5;
 }
 
 - (void)didReceiveMemoryWarning {
