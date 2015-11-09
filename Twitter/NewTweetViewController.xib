@@ -6,7 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTweetViewController">
             <connections>
+                <outlet property="profileImageView" destination="amq-Hz-aGs" id="Rgf-Fi-WQ7"/>
+                <outlet property="screenNameLabel" destination="bo2-57-byy" id="0xA-F3-8VP"/>
                 <outlet property="tweetTextField" destination="QAd-Sg-9gL" id="xvK-jg-hiy"/>
+                <outlet property="userNameLabel" destination="dCW-Xq-LYf" id="jbj-f4-jBa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,22 +18,56 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-Sg-9gL">
-                    <rect key="frame" x="8" y="54" width="304" height="60"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-Sg-9gL">
+                    <rect key="frame" x="14" y="126" width="293" height="60"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="Cpg-jw-UW0"/>
+                        <constraint firstAttribute="height" constant="60" id="z7a-bK-PmA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" keyboardType="twitter"/>
                 </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amq-Hz-aGs">
+                    <rect key="frame" x="14" y="70" width="48" height="48"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="s68-n1-mT3"/>
+                        <constraint firstAttribute="width" constant="48" id="udQ-pn-qvV"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo2-57-byy">
+                    <rect key="frame" x="70" y="90" width="80" height="17"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="nbV-gS-fJ8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCW-Xq-LYf">
+                    <rect key="frame" x="70" y="70" width="66.5" height="17"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="BQ1-KH-ELi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="QAd-Sg-9gL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="54" id="I7A-XN-MQA"/>
-                <constraint firstItem="QAd-Sg-9gL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ox3-C1-Sze"/>
-                <constraint firstAttribute="trailing" secondItem="QAd-Sg-9gL" secondAttribute="trailing" constant="8" id="zlb-ie-vAC"/>
+                <constraint firstItem="QAd-Sg-9gL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2w8-4u-gcF"/>
+                <constraint firstItem="QAd-Sg-9gL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="6oH-5V-eeP"/>
+                <constraint firstItem="amq-Hz-aGs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="AhI-fb-wdo"/>
+                <constraint firstItem="amq-Hz-aGs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="Edr-3q-Hts"/>
+                <constraint firstItem="dCW-Xq-LYf" firstAttribute="leading" secondItem="amq-Hz-aGs" secondAttribute="trailing" constant="8" id="H2d-In-D0T"/>
+                <constraint firstItem="bo2-57-byy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="Hkv-GX-Xb9"/>
+                <constraint firstItem="bo2-57-byy" firstAttribute="leading" secondItem="amq-Hz-aGs" secondAttribute="trailing" constant="8" id="TgO-kN-3e7"/>
+                <constraint firstItem="QAd-Sg-9gL" firstAttribute="top" secondItem="amq-Hz-aGs" secondAttribute="bottom" constant="8" id="Vkv-6U-nas"/>
+                <constraint firstItem="dCW-Xq-LYf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="XJM-jQ-qAG"/>
             </constraints>
             <point key="canvasLocation" x="360" y="300"/>
         </view>

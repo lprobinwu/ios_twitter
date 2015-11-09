@@ -11,6 +11,7 @@
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "TweetDetailsViewController.h"
+#import "NewTweetViewController.h"
 
 @interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -73,7 +74,7 @@
     [[UIBarButtonItem alloc] initWithTitle:@"New"
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(logout)];
+                                    action:@selector(openNewTweetView)];
     
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
@@ -104,6 +105,11 @@
 - (void) logout {
     [User logout];
     NSLog(@"User logged out");
+}
+
+- (void) openNewTweetView {
+    NewTweetViewController *vc = [[NewTweetViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,10 +7,15 @@
 //
 
 #import "NewTweetViewController.h"
+#import "User.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface NewTweetViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tweetTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 
 @end
 
@@ -19,7 +24,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self loadUserInfo];
+    [self customizeRightNavBarButtons];
 }
+
+- (void) loadUserInfo {
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@", [User currentUser].name];
+    [self.userNameLabel sizeToFit];
+    
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", [User currentUser].screenname];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:[User currentUser].profileImageUrl]];
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.cornerRadius = 5;
+
+}
+
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Tweet"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(createNewTweet)];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void) createNewTweet {
+    NSLog(@"Creating new tweet");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
