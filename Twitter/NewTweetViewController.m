@@ -9,6 +9,8 @@
 #import "NewTweetViewController.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
+#import "TweetsViewController.h"
+#import "TwitterClient.h"
 
 @interface NewTweetViewController ()
 
@@ -45,13 +47,32 @@
     [[UIBarButtonItem alloc] initWithTitle:@"Tweet"
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(createNewTweet)];
+                                    action:@selector(onNewTweet)];
     
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
-- (void) createNewTweet {
+- (void) onNewTweet {
     NSLog(@"Creating new tweet");
+    
+    // TODO add it on later to avoid too much tweeting
+    
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    params[@"status"] = self.tweetTextField.text;
+//    [[TwitterClient sharedInstance] statusUpdateWihParams:params completion:^(NSError *error) {
+//        if (error == nil) {
+//            [self goToHomeTimeLine];
+//        } else {
+//            NSLog(@"Failed to post status: %@", error);
+//        }
+//    }];
+    [self goToHomeTimeLine];
+}
+
+- (void) goToHomeTimeLine {
+    UIViewController *tweetsViewController = [[TweetsViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 

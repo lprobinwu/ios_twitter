@@ -23,10 +23,8 @@
 
 - (void) setTweet: (Tweet *)tweet {
     _tweet = tweet;
-    NSString *createAtString = [NSDateFormatter localizedStringFromDate:tweet.createdAt
-                                                              dateStyle:NSDateFormatterShortStyle
-                                                              timeStyle:NSDateFormatterNoStyle];
-    self.timeLabel.text = createAtString;
+
+    self.timeLabel.text = tweet.timeDifference;
     self.tweetLabel.text = tweet.text;
     [self.tweetLabel sizeToFit];
     

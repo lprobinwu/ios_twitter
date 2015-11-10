@@ -15,14 +15,17 @@
     
     if (self) {
         self.user = [[User alloc] initWithDictionary:dictionary[@"user"]];
+        
         self.text = dictionary[@"text"];
         self.retweetCount = dictionary[@"retweet_count"];
+        self.idStr = dictionary[@"id_str"];
         
         NSString *createdAtString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         
         self.createdAt = [formatter dateFromString:createdAtString];
+        self.timeDifference = [self timeDifferencefrom:[NSDate date] since:self.createdAt];
     }
     
     return self;
@@ -36,6 +39,19 @@
     }
     
     return tweets;
+}
+
+- (NSString *) timeDifferencefrom: (NSDate *) fromDate since: (NSDate *) sinceDate {
+    NSTimeInterval secondsBetween = [fromDate timeIntervalSinceDate:sinceDate];
+    if (secondsBetween < 60) {
+        return [NSString stringWithFormat:@"%lds", (long)secondsBetween];
+    } else if (secondsBetween < 60 * 60) {
+        return [NSString stringWithFormat:@"%ldm", (long)secondsBetween / 60];
+    } else if (secondsBetween < 60 * 60 * 24) {
+        return [NSString stringWithFormat:@"%ldh", (long)secondsBetween / 60 / 60];
+    } else {
+        return [NSString stringWithFormat:@"%ldd", (long)secondsBetween / 60 / 60 / 24];
+    }
 }
 
 @end

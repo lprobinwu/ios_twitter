@@ -19,4 +19,10 @@
 
 - (void) homeTimelineWithParams: (NSDictionary *)params completion: (void (^)(NSArray *tweets, NSError *error)) completion;
 
+- (void) statusUpdateWihParams:(NSDictionary *)params completion:(void (^)(NSError *))completion;
+
+- (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion;
+
+- (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion;
+
 @end
