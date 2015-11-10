@@ -16,7 +16,6 @@
 		8375D57E1BEF281100A57812 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375D57C1BEF281100A57812 /* TweetCell.xib */; settings = {ASSET_TAGS = (); }; };
 		83B8358D1BEBCD2B000CE248 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B8358C1BEBCD2B000CE248 /* main.m */; };
 		83B835901BEBCD2B000CE248 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B8358F1BEBCD2B000CE248 /* AppDelegate.m */; };
-		83B835981BEBCD2B000CE248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B835971BEBCD2B000CE248 /* Assets.xcassets */; };
 		83B8359B1BEBCD2B000CE248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B835991BEBCD2B000CE248 /* LaunchScreen.storyboard */; };
 		83C2FBD51BF000960088E501 /* NewTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2FBD31BF000960088E501 /* NewTweetViewController.m */; settings = {ASSET_TAGS = (); }; };
 		83C2FBD61BF000960088E501 /* NewTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C2FBD41BF000960088E501 /* NewTweetViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -48,7 +47,6 @@
 		83B8358C1BEBCD2B000CE248 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B8358E1BEBCD2B000CE248 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		83B8358F1BEBCD2B000CE248 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		83B835971BEBCD2B000CE248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B8359A1BEBCD2B000CE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B8359C1BEBCD2B000CE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83C2FBD21BF000960088E501 /* NewTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTweetViewController.h; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				83E5233B1BEBCF9900C909D8 /* Controllers */,
 				83B8358E1BEBCD2B000CE248 /* AppDelegate.h */,
 				83B8358F1BEBCD2B000CE248 /* AppDelegate.m */,
-				83B835971BEBCD2B000CE248 /* Assets.xcassets */,
 				83B835991BEBCD2B000CE248 /* LaunchScreen.storyboard */,
 				83B8359C1BEBCD2B000CE248 /* Info.plist */,
 				83B8358B1BEBCD2B000CE248 /* Supporting Files */,
@@ -252,7 +249,6 @@
 				8375D57E1BEF281100A57812 /* TweetCell.xib in Resources */,
 				83B8359B1BEBCD2B000CE248 /* LaunchScreen.storyboard in Resources */,
 				83C2FBD61BF000960088E501 /* NewTweetViewController.xib in Resources */,
-				83B835981BEBCD2B000CE248 /* Assets.xcassets in Resources */,
 				83C2FBDB1BF034290088E501 /* TweetDetailsViewController.xib in Resources */,
 				83E5233A1BEBCF8300C909D8 /* LoginViewController.xib in Resources */,
 			);

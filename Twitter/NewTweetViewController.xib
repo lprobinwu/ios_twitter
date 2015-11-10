@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="profileImageView" destination="amq-Hz-aGs" id="Rgf-Fi-WQ7"/>
                 <outlet property="screenNameLabel" destination="bo2-57-byy" id="0xA-F3-8VP"/>
-                <outlet property="tweetTextField" destination="QAd-Sg-9gL" id="xvK-jg-hiy"/>
+                <outlet property="tweetTextView" destination="3XX-i7-Agt" id="mo6-Ju-vAB"/>
                 <outlet property="userNameLabel" destination="dCW-Xq-LYf" id="jbj-f4-jBa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,15 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-Sg-9gL">
-                    <rect key="frame" x="14" y="126" width="293" height="60"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="z7a-bK-PmA"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="twitter"/>
-                </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amq-Hz-aGs">
                     <rect key="frame" x="14" y="70" width="48" height="48"/>
                     <animations/>
@@ -55,19 +46,28 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XX-i7-Agt">
+                    <rect key="frame" x="14" y="126" width="292" height="86"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="86" id="M71-al-qHZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
+                </textView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="QAd-Sg-9gL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2w8-4u-gcF"/>
-                <constraint firstItem="QAd-Sg-9gL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="6oH-5V-eeP"/>
                 <constraint firstItem="amq-Hz-aGs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="AhI-fb-wdo"/>
                 <constraint firstItem="amq-Hz-aGs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="Edr-3q-Hts"/>
                 <constraint firstItem="dCW-Xq-LYf" firstAttribute="leading" secondItem="amq-Hz-aGs" secondAttribute="trailing" constant="8" id="H2d-In-D0T"/>
                 <constraint firstItem="bo2-57-byy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="Hkv-GX-Xb9"/>
                 <constraint firstItem="bo2-57-byy" firstAttribute="leading" secondItem="amq-Hz-aGs" secondAttribute="trailing" constant="8" id="TgO-kN-3e7"/>
-                <constraint firstItem="QAd-Sg-9gL" firstAttribute="top" secondItem="amq-Hz-aGs" secondAttribute="bottom" constant="8" id="Vkv-6U-nas"/>
                 <constraint firstItem="dCW-Xq-LYf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="XJM-jQ-qAG"/>
+                <constraint firstItem="3XX-i7-Agt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="d5d-mk-6Ku"/>
+                <constraint firstAttribute="trailing" secondItem="3XX-i7-Agt" secondAttribute="trailing" constant="14" id="jAi-bA-i0f"/>
+                <constraint firstItem="3XX-i7-Agt" firstAttribute="top" secondItem="amq-Hz-aGs" secondAttribute="bottom" constant="8" id="umn-vY-hfk"/>
             </constraints>
             <point key="canvasLocation" x="360" y="300"/>
         </view>

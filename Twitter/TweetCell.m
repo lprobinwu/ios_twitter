@@ -8,6 +8,7 @@
 
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "Color.h"
 
 @interface TweetCell()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -15,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *replyImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 
 @end
 
@@ -35,6 +39,23 @@
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.layer.cornerRadius = 5;
+    
+    self.replyImageView.image = [self.replyImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.replyImageView.tintColor = [UIColor lightGrayColor];
+    
+    self.retweetImageView.image = [self.retweetImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (tweet.retweeted) {
+        self.retweetImageView.tintColor = [Color twitterBlue];
+    } else {
+        self.retweetImageView.tintColor = [UIColor lightGrayColor];
+    }
+
+    self.likeImageView.image = [self.likeImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (tweet.favorited) {
+        self.likeImageView.tintColor = [UIColor redColor];
+    } else {
+        self.likeImageView.tintColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void)awakeFromNib {

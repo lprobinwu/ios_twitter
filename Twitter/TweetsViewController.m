@@ -12,6 +12,7 @@
 #import "TweetCell.h"
 #import "TweetDetailsViewController.h"
 #import "NewTweetViewController.h"
+#import "Color.h"
 
 @interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -28,10 +29,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Home";
         [self customizeLeftNavBarButtons];
-        [self customizeRightNavBarButtons];
-        
+        [self customizeRightNavBarButtons];        
     }
     return self;
 }
@@ -39,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self customizeNavBarColorStyle];
     [self setUpTableView];
     
     [self refreshTweetsWithCompletion:nil];
@@ -58,6 +57,14 @@
     }];
 }
 
+- (void) customizeNavBarColorStyle {
+    UIColor *bgColor = [Color twitterBlue];
+    [self.navigationController.navigationBar setBarTintColor:bgColor];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    self.title = @"Home";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+}
 
 - (void)customizeLeftNavBarButtons {
     UIBarButtonItem *barButtonItem =
@@ -101,7 +108,6 @@
     }];
 }
 
-
 - (void) logout {
     [User logout];
     NSLog(@"User logged out");
@@ -126,6 +132,7 @@
     TweetDetailsViewController *vc = [[TweetDetailsViewController alloc] init];
     vc.tweet = self.tweets[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -134,14 +141,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

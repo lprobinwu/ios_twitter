@@ -32,19 +32,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzC-ds-arW">
-                        <rect key="frame" x="299" y="6" width="13" height="14"/>
+                        <rect key="frame" x="298" y="6" width="14" height="14"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="N4M-2H-xoB"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reply" translatesAutoresizingMaskIntoConstraints="NO" id="YWE-0t-tyN">
                         <rect key="frame" x="57" y="70" width="16" height="16"/>
                         <animations/>
-                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="8BO-OX-2Va"/>
                             <constraint firstAttribute="height" constant="16" id="mgR-CZ-bBH"/>
@@ -74,7 +74,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMr-cg-UWF">
-                        <rect key="frame" x="166.5" y="6" width="30.5" height="14"/>
+                        <rect key="frame" x="166" y="6" width="30.5" height="14"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="x04-ZN-Npi"/>
@@ -115,7 +115,10 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="likeImageView" destination="AfQ-S7-nHU" id="RjW-kG-wK2"/>
                 <outlet property="profileImageView" destination="5ci-xt-YeD" id="T0Z-Wc-bvX"/>
+                <outlet property="replyImageView" destination="YWE-0t-tyN" id="AMS-Qm-Gh3"/>
+                <outlet property="retweetImageView" destination="KsC-gL-Bgg" id="Gu2-QZ-StS"/>
                 <outlet property="screenNameLabel" destination="aMr-cg-UWF" id="cYF-Rp-E12"/>
                 <outlet property="timeLabel" destination="zzC-ds-arW" id="WzT-Aj-hUB"/>
                 <outlet property="tweetLabel" destination="mDt-Uq-UnT" id="GS5-Qw-jvk"/>

@@ -11,10 +11,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "TweetsViewController.h"
 #import "TwitterClient.h"
+#import "Color.h"
 
 @interface NewTweetViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *tweetTextField;
+@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
@@ -27,7 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
     [self loadUserInfo];
+    [self customizeNavBarColorStyle];
     [self customizeRightNavBarButtons];
 }
 
@@ -39,7 +42,14 @@
     [self.profileImageView setImageWithURL:[NSURL URLWithString:[User currentUser].profileImageUrl]];
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.layer.cornerRadius = 5;
+    
+    [self.tweetTextView becomeFirstResponder];
+}
 
+- (void) customizeNavBarColorStyle {
+    UIColor *bgColor = [Color twitterBlue];
+    [self.navigationController.navigationBar setBarTintColor:bgColor];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 - (void)customizeRightNavBarButtons {
@@ -53,19 +63,17 @@
 }
 
 - (void) onNewTweet {
-    NSLog(@"Creating new tweet");
+    NSLog(@"on creating new tweet");
     
-    // TODO add it on later to avoid too much tweeting
-    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    params[@"status"] = self.tweetTextField.text;
-//    [[TwitterClient sharedInstance] statusUpdateWihParams:params completion:^(NSError *error) {
-//        if (error == nil) {
-//            [self goToHomeTimeLine];
-//        } else {
-//            NSLog(@"Failed to post status: %@", error);
-//        }
-//    }];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"status"] = self.tweetTextView.text;
+    [[TwitterClient sharedInstance] statusUpdateWithParams:params completion:^(NSError *error) {
+        if (error == nil) {
+            [self goToHomeTimeLine];
+        } else {
+            NSLog(@"Failed to post status: %@", error);
+        }
+    }];
     [self goToHomeTimeLine];
 }
 
@@ -81,14 +89,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

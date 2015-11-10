@@ -16,6 +16,8 @@
 @property(nonatomic, strong) NSString *timeDifference;
 @property(nonatomic, strong) NSNumber *retweetCount;
 @property (nonatomic, strong) NSString *idStr;
+@property (nonatomic) BOOL favorited;
+@property (nonatomic) BOOL retweeted;
 
 @property(nonatomic, strong) User *user;
 

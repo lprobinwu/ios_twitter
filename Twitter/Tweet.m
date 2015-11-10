@@ -18,6 +18,8 @@
         
         self.text = dictionary[@"text"];
         self.retweetCount = dictionary[@"retweet_count"];
+        self.retweeted = [(NSNumber *) dictionary[@"retweeted"] boolValue];
+        self.favorited = [(NSNumber *)dictionary[@"favorited"] boolValue];
         self.idStr = dictionary[@"id_str"];
         
         NSString *createdAtString = dictionary[@"created_at"];

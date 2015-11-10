@@ -19,10 +19,14 @@
 
 - (void) homeTimelineWithParams: (NSDictionary *)params completion: (void (^)(NSArray *tweets, NSError *error)) completion;
 
-- (void) statusUpdateWihParams:(NSDictionary *)params completion:(void (^)(NSError *))completion;
+- (void) statusUpdateWithParams:(NSDictionary *)params completion:(void (^)(NSError *error))completion;
 
-- (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion;
+- (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSString *idString, NSError *error))completion;
 
-- (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion;
+- (void) statusDestroyWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion;
+
+- (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion;
+
+- (void) deleteFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion;
 
 @end

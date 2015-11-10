@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "TweetsViewController.h"
 #import "TwitterClient.h"
+#import "Color.h"
 
 @interface TweetDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 
+@property (nonatomic, strong) NSString *retweetIdString;
+
 @end
 
 @implementation TweetDetailsViewController
@@ -32,13 +35,12 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initTweetDetailView];
+    [self customizeNavBarColorStyle];
     [self customizeImageViewsTapBahavior];
     [self customizeRightNavBarButtons];
 }
 
 - (void) initTweetDetailView {
-    self.title = @"Tweet";
-    
     self.userNameLabel.text = [NSString stringWithFormat:@"%@", self.tweet.user.name];
     [self.userNameLabel sizeToFit];
     
@@ -60,6 +62,32 @@
     [self.profileImageView setImageWithURL:[NSURL URLWithString:self.tweet.user.profileImageUrl]];
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.layer.cornerRadius = 5;
+    
+    self.replyImageView.image = [self.replyImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.replyImageView.tintColor = [UIColor grayColor];
+    
+    self.retweetImageView.image = [self.retweetImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (self.tweet.retweeted) {
+        self.retweetImageView.tintColor = [Color twitterBlue];
+    } else {
+        self.retweetImageView.tintColor = [UIColor lightGrayColor];
+    }
+    
+    self.likeImageView.image = [self.likeImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (self.tweet.favorited) {
+        self.likeImageView.tintColor = [UIColor redColor];
+    } else {
+        self.likeImageView.tintColor = [UIColor lightGrayColor];
+    }
+}
+
+- (void) customizeNavBarColorStyle {
+    UIColor *bgColor = [Color twitterBlue];
+    [self.navigationController.navigationBar setBarTintColor:bgColor];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    self.title = @"Tweet";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 - (void) customizeImageViewsTapBahavior {
@@ -96,8 +124,9 @@
     params[@"status"] = self.tweetTextView.text;
     params[@"in_reply_to_status_id"] = self.tweet.idStr;
     
-    [[TwitterClient sharedInstance] statusUpdateWihParams:params completion:^(NSError *error) {
+    [[TwitterClient sharedInstance] statusUpdateWithParams:params completion:^(NSError *error) {
         if (error == nil) {
+            NSLog(@"Reply Tweet Done");
             [self goToHomeTimeLine];
         } else {
             NSLog(@"Failed to reply to tweet: %@", error);
@@ -113,25 +142,81 @@
 
 - (void) onRetweetTapped {
     NSLog(@"On Retweet Tapped");
-    [[TwitterClient sharedInstance] statusRetweetWithStatusId:self.tweet.idStr completion:^(NSError *error) {
+    if (self.tweet.retweeted) {
+        [self deleteRetweet];
+    } else {
+        [self addRetweet];
+    }
+}
+
+- (void) addRetweet {
+    [[TwitterClient sharedInstance] statusRetweetWithStatusId:self.tweet.idStr completion:^(NSString *idString, NSError *error) {
         if (error == nil) {
+            NSLog(@"Add Retweet Done");
+            self.retweetIdString = idString;
             self.numOfRetweetsLabel.text = [NSString stringWithFormat:@"%d", [self.numOfRetweetsLabel.text intValue] + 1];
-            [self goToHomeTimeLine];
+            self.retweetImageView.tintColor = [Color twitterBlue];
+            self.tweet.retweeted = YES;
+//            [self goToHomeTimeLine];
         } else {
-            NSLog(@"Failed to retweet: %@", error);
+            NSLog(@"Failed to add retweet: %@", error);
+        }
+    }];
+}
+
+- (void) deleteRetweet {
+    if (self.retweetIdString == nil) {
+        NSLog(@"Not Implemented yet, Need to get retweet id on initializing this page");
+    }
+    
+    [[TwitterClient sharedInstance] statusDestroyWithStatusId:self.retweetIdString completion:^(NSError *error) {
+        if (error == nil) {
+            NSLog(@"Delete Retweet Done");
+            self.numOfRetweetsLabel.text = [NSString stringWithFormat:@"%d", [self.numOfRetweetsLabel.text intValue] - 1];
+            self.retweetImageView.tintColor = [UIColor grayColor];
+            self.tweet.retweeted = NO;
+            self.retweetIdString = nil;
+//            [self goToHomeTimeLine];
+        } else {
+            NSLog(@"Failed to delete retweet: %@", error);
         }
     }];
 }
 
 - (void) onLikeTapped {
     NSLog(@"On Like Tapped");
+    if (self.tweet.favorited) {
+        [self removeFavorites];
+    } else {
+        [self addFavorites];
+    }
+}
+
+- (void) addFavorites {
     [[TwitterClient sharedInstance] addFavoritesWithStatusId:self.tweet.idStr completion:^(NSError *error) {
         if (error == nil) {
+            NSLog(@"Add Favorite Done");
             self.numOfLikesLabel.text = [NSString stringWithFormat:@"%d", [self.numOfLikesLabel.text intValue] + 1];
+            self.likeImageView.tintColor = [UIColor redColor];
+            self.tweet.favorited = YES;
         } else {
-            NSLog(@"Failed to favorite tweet: %@", error);
+            NSLog(@"Failed to add favorite: %@", error);
         }
     }];
+}
+
+- (void) removeFavorites {
+    [[TwitterClient sharedInstance] deleteFavoritesWithStatusId:self.tweet.idStr completion:^(NSError *error) {
+        if (error == nil) {
+            NSLog(@"Delete Favorite Done");
+            self.numOfLikesLabel.text = [NSString stringWithFormat:@"%d", [self.numOfLikesLabel.text intValue] - 1];
+            self.likeImageView.tintColor = [UIColor grayColor];
+            self.tweet.favorited = NO;
+        } else {
+            NSLog(@"Failed to delete favorite: %@", error);
+        }
+    }];
+    
 }
 
 - (void) goToHomeTimeLine {
@@ -146,14 +231,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

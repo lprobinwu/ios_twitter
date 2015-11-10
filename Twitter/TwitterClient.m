@@ -90,7 +90,7 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 - (void) homeTimelineWithParams: (NSDictionary *)params completion: (void (^)(NSArray *tweets, NSError *error)) completion {
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        NSLog(@"Got tweets");
+        NSLog(@"Got tweets: %@", responseObject);
 
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil);
@@ -100,8 +100,8 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-- (void) statusUpdateWihParams:(NSDictionary *)params completion:(void (^)(NSError *))completion {
-    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id  responseObject) {
+- (void) statusUpdateWithParams:(NSDictionary *)params completion:(void (^)(NSError *error))completion {
+    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success in Tweet Status Update");
         completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -109,8 +109,18 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-- (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion {
+- (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSString *idString, NSError *error))completion {
     NSString *url = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", statusId];
+    [self POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *idStr = responseObject[@"id_str"];
+        completion(idStr, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void) statusDestroyWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion {
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/destroy/%@.json", statusId];
     [self POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -118,10 +128,20 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-- (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *))completion {
+- (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"id"] = statusId;
     [self POST:@"1.1/favorites/create.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(error);
+    }];
+}
+
+- (void) deleteFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"id"] = statusId;
+    [self POST:@"1.1/favorites/destroy.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(error);
