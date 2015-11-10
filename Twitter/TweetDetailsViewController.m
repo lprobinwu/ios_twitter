@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self getRetweetId];
     
     [self initTweetDetailView];
     [self customizeNavBarColorStyle];
@@ -81,6 +82,8 @@
     }
 }
 
+
+
 - (void) customizeNavBarColorStyle {
     UIColor *bgColor = [Color twitterBlue];
     [self.navigationController.navigationBar setBarTintColor:bgColor];
@@ -105,6 +108,16 @@
     likeTap.numberOfTapsRequired = 1;
     [self.likeImageView setUserInteractionEnabled:YES];
     [self.likeImageView addGestureRecognizer:likeTap];
+}
+
+- (void) getRetweetId {
+    if (self.tweet.retweeted) {
+        [[TwitterClient sharedInstance] statusGetRetweetIdWithStatusId:self.tweet.originalTweetId completion:^(NSString *reTweetIdString, NSError *error) {
+            if (error == nil) {
+                self.retweetIdString = reTweetIdString;
+            }
+        }];
+    }
 }
 
 - (void)customizeRightNavBarButtons {
@@ -157,7 +170,7 @@
             self.numOfRetweetsLabel.text = [NSString stringWithFormat:@"%d", [self.numOfRetweetsLabel.text intValue] + 1];
             self.retweetImageView.tintColor = [Color twitterBlue];
             self.tweet.retweeted = YES;
-//            [self goToHomeTimeLine];
+            [self goToHomeTimeLine];
         } else {
             NSLog(@"Failed to add retweet: %@", error);
         }
@@ -166,7 +179,8 @@
 
 - (void) deleteRetweet {
     if (self.retweetIdString == nil) {
-        NSLog(@"Not Implemented yet, Need to get retweet id on initializing this page");
+        NSLog(@"Error, retweet id string not ready yet");
+        return;
     }
     
     [[TwitterClient sharedInstance] statusDestroyWithStatusId:self.retweetIdString completion:^(NSError *error) {
@@ -176,7 +190,7 @@
             self.retweetImageView.tintColor = [UIColor grayColor];
             self.tweet.retweeted = NO;
             self.retweetIdString = nil;
-//            [self goToHomeTimeLine];
+            [self goToHomeTimeLine];
         } else {
             NSLog(@"Failed to delete retweet: %@", error);
         }

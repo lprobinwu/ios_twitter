@@ -119,6 +119,17 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+- (void) statusGetRetweetIdWithStatusId:(NSString *)statusId completion:(void (^)(NSString *reTweetIdString, NSError *error))completion {
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/show/%@.json?include_my_retweet=1", statusId];
+    [self GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *idStr = responseObject[@"current_user_retweet"][@"id_str"];
+        completion(idStr, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+
 - (void) statusDestroyWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion {
     NSString *url = [NSString stringWithFormat:@"1.1/statuses/destroy/%@.json", statusId];
     [self POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

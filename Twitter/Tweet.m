@@ -22,6 +22,14 @@
         self.favorited = [(NSNumber *)dictionary[@"favorited"] boolValue];
         self.idStr = dictionary[@"id_str"];
         
+        if (self.retweeted) {
+            if (dictionary[@"retweeted_status"] == nil) {
+                self.originalTweetId = self.idStr;
+            } else {
+                self.originalTweetId = dictionary[@"retweeted_status"][@"id_str"];
+            }
+        }
+        
         NSString *createdAtString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";

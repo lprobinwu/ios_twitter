@@ -23,6 +23,8 @@
 
 - (void) statusRetweetWithStatusId:(NSString *)statusId completion:(void (^)(NSString *idString, NSError *error))completion;
 
+- (void) statusGetRetweetIdWithStatusId:(NSString *)statusId completion:(void (^)(NSString *reTweetIdString, NSError *error))completion;
+
 - (void) statusDestroyWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion;
 
 - (void) addFavoritesWithStatusId:(NSString *)statusId completion:(void (^)(NSError *error))completion;
