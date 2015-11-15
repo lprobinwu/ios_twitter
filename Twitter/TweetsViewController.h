@@ -10,4 +10,7 @@
 
 @interface TweetsViewController : UIViewController
 
+- (id)initWithTagName:(NSString *)tagName;
+@property(nonatomic, strong) NSString *tagName;
+
 @end

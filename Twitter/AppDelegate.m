@@ -35,17 +35,14 @@
     if (user != nil) {
         NSLog(@"Welcome %@", user.name);
         
-//        UIViewController *tweetsVC = [[TweetsViewController alloc] init];
-//        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tweetsVC];
-        
         HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
         self.window.rootViewController = hamburgerVC;
         
         MenuViewController *menuVC = [[MenuViewController alloc] init];
+        UINavigationController *menuNVC = [[UINavigationController alloc]initWithRootViewController:menuVC];
         
         [menuVC setHamburgerViewController:hamburgerVC];
-        [hamburgerVC setMenuViewController:menuVC];
-
+        [hamburgerVC setMenuViewController:menuNVC];
         
     } else {
         NSLog(@"Not Logged In");

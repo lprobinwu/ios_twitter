@@ -44,6 +44,13 @@
     [self refreshTweetsWithCompletion:nil];
 }
 
+- (id)initWithTagName:(NSString *)tagName {
+    self = [self init];
+    _tagName = tagName;
+    
+    return self;
+}
+
 - (void)refreshTweetsWithCompletion:(void (^)())completion {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         if (tweets != nil) {
@@ -63,6 +70,7 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.title = @"Home";
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 

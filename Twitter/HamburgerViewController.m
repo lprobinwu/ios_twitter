@@ -7,6 +7,7 @@
 //
 
 #import "HamburgerViewController.h"
+#import "Color.h"
 
 @interface HamburgerViewController ()
 
@@ -23,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (IBAction)onPanGesture:(UIPanGestureRecognizer *)sender {
@@ -58,6 +60,8 @@
 }
 
 - (void) setContentViewController:(UIViewController *)contentViewController {
+    [self hideContentController:_contentViewController];
+    
     _contentViewController = contentViewController;
     
     [self.view layoutIfNeeded];
@@ -74,7 +78,6 @@
     
 }
 
-// To Determine when to be called.
 - (void) hideContentController:(UIViewController *) content {
     if (content != nil) {
         [content willMoveToParentViewController:nil];

@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "ProfileViewController.h"
 #import "TweetsViewController.h"
+#import "MentionsViewController.h"
+#import "Color.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIColor *bgColor = [Color twitterBlue];
+    [self.navigationController.navigationBar setBarTintColor:bgColor];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -32,12 +38,15 @@
 
     UIViewController *profileViewController = [[ProfileViewController alloc]init];
     UINavigationController *profileNVC = [[UINavigationController alloc] initWithRootViewController:profileViewController];
-    profileNVC.navigationBar.barTintColor = [UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+    profileNVC.navigationBar.barTintColor = [Color twitterBlue];
     profileNVC.navigationBar.tintColor = [UIColor whiteColor];
     [profileNVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     profileNVC.navigationBar.translucent = NO;
     
-    self.viewControllers = [NSArray arrayWithObjects:tweetsNVC, profileNVC, nil];
+    UIViewController *mentionsViewController = [[MentionsViewController alloc]init];
+    UINavigationController *mentionsNVC = [[UINavigationController alloc] initWithRootViewController:mentionsViewController];
+    
+    self.viewControllers = [NSArray arrayWithObjects:tweetsNVC, profileNVC, mentionsNVC, nil];
     
     self.hamburgerViewController.contentViewController = tweetsNVC;
 }
@@ -45,12 +54,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];
-    
+    self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,12 +70,14 @@
         case 1:
             cell.textLabel.text = @"User Profile";
             break;
+        case 2:
+            cell.textLabel.text = @"Mentions";
+            break;
     }
     
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21];
     cell.textLabel.textColor = [UIColor whiteColor];
-    // use twitter color https://about.twitter.com/press/brand-assets
-    cell.backgroundColor = [UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+    cell.backgroundColor = [Color twitterBlue];
     
     return cell;
 }
