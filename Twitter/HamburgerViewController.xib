@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APS-fH-aTO" userLabel="MenuView">
-                    <rect key="frame" x="0.0" y="20" width="320" height="568"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APS-fH-aTO" userLabel="MenuView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="0.90222942110000004" blue="0.92136752160000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -39,7 +39,7 @@
                 <constraint firstAttribute="trailing" secondItem="APS-fH-aTO" secondAttribute="trailing" id="LIW-Ub-Mvd"/>
                 <constraint firstAttribute="bottom" secondItem="hdo-Ap-XDh" secondAttribute="bottom" id="RdK-x6-lZK"/>
                 <constraint firstAttribute="bottom" secondItem="APS-fH-aTO" secondAttribute="bottom" id="XVc-MR-fyN"/>
-                <constraint firstItem="APS-fH-aTO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="XYz-Gv-cFc"/>
+                <constraint firstItem="APS-fH-aTO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XYz-Gv-cFc"/>
                 <constraint firstItem="hdo-Ap-XDh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ceR-zo-ww6"/>
                 <constraint firstItem="APS-fH-aTO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d1q-vJ-SVD"/>
                 <constraint firstItem="hdo-Ap-XDh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tSV-5p-FSz"/>

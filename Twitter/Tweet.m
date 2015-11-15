@@ -36,6 +36,10 @@
         
         self.createdAt = [formatter dateFromString:createdAtString];
         self.timeDifference = [self timeDifferencefrom:[NSDate date] since:self.createdAt];
+        
+        if (dictionary[@"retweeted_status"]) {
+            self.retweetedTweet = [[Tweet alloc] initWithDictionary:dictionary[@"retweeted_status"]];
+        }
     }
     
     return self;

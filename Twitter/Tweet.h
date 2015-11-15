@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *originalTweetId;
 @property (nonatomic) BOOL favorited;
 @property (nonatomic) BOOL retweeted;
+@property (nonatomic, strong) Tweet *retweetedTweet;
 
 @property(nonatomic, strong) User *user;
 
