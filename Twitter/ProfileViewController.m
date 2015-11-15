@@ -11,6 +11,7 @@
 #import "ProfileCell.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "Color.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self customizeNavBarColorStyle];
+    
     User *user = self.user ? self.user : [User currentUser];
     
     NSString *bannerUrl = user.bannerUrl ? [NSString stringWithFormat:@"%@/mobile_retina", user.bannerUrl] : user.backgroundImageUrl;
@@ -42,6 +45,16 @@
     
     [self refreshProfile];
 }
+
+- (void) customizeNavBarColorStyle {
+    UIColor *bgColor = [Color twitterBlue];
+    [self.navigationController.navigationBar setBarTintColor:bgColor];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    self.title = @"Profile";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+}
+
 
 - (void)refreshProfile {
     [[TwitterClient sharedInstance] userTimelineWithParams:nil user:self.user completion:^(NSArray *tweets, NSError *error) {
@@ -73,6 +86,7 @@
         }
         
         [profileCell setUser:user];
+        profileCell.clipsToBounds = NO;
         [profileCell layoutIfNeeded];
         
         return profileCell;
@@ -84,14 +98,6 @@
         return tweetCell;
     }
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self configureCell:self.prototypeCell forRowAtIndexPath:indexPath];
-//    [self.prototypeCell layoutIfNeeded];
-//    
-//    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    return size.height+1;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

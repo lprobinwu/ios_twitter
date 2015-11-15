@@ -12,5 +12,6 @@
 @interface Color : NSObject
 
 + (UIColor *)twitterBlue;
++ (UIColor *)limeGreen;
 
 @end

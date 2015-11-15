@@ -45,7 +45,7 @@
     
     self.retweetImageView.image = [self.retweetImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     if (tweet.retweeted) {
-        self.retweetImageView.tintColor = [Color twitterBlue];
+        self.retweetImageView.tintColor = [Color limeGreen];
     } else {
         self.retweetImageView.tintColor = [UIColor lightGrayColor];
     }
