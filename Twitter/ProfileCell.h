@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.h
+//  ProfileCell.h
 //  Twitter
 //
 //  Created by Robin Wu on 11/14/15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileCell : UITableViewCell
 
 @property (strong, nonatomic) User *user;
 

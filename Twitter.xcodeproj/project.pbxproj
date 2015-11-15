@@ -21,6 +21,8 @@
 		8395B5F21BF82426004C4DA5 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8395B5F01BF82426004C4DA5 /* MenuViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		8395B5F61BF825A1004C4DA5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8395B5F41BF825A1004C4DA5 /* ProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8395B5F71BF825A1004C4DA5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8395B5F51BF825A1004C4DA5 /* ProfileViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8395B5FB1BF843A3004C4DA5 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8395B5F91BF843A3004C4DA5 /* ProfileCell.m */; settings = {ASSET_TAGS = (); }; };
+		8395B5FC1BF843A3004C4DA5 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8395B5FA1BF843A3004C4DA5 /* ProfileCell.xib */; settings = {ASSET_TAGS = (); }; };
 		83B8358D1BEBCD2B000CE248 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B8358C1BEBCD2B000CE248 /* main.m */; };
 		83B835901BEBCD2B000CE248 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B8358F1BEBCD2B000CE248 /* AppDelegate.m */; };
 		83B8359B1BEBCD2B000CE248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B835991BEBCD2B000CE248 /* LaunchScreen.storyboard */; };
@@ -60,6 +62,9 @@
 		8395B5F31BF825A1004C4DA5 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8395B5F41BF825A1004C4DA5 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		8395B5F51BF825A1004C4DA5 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		8395B5F81BF843A3004C4DA5 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		8395B5F91BF843A3004C4DA5 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		8395B5FA1BF843A3004C4DA5 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		83B835881BEBCD2B000CE248 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B8358C1BEBCD2B000CE248 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B8358E1BEBCD2B000CE248 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 				8375D57A1BEF281100A57812 /* TweetCell.h */,
 				8375D57B1BEF281100A57812 /* TweetCell.m */,
 				8375D57C1BEF281100A57812 /* TweetCell.xib */,
+				8395B5F81BF843A3004C4DA5 /* ProfileCell.h */,
+				8395B5F91BF843A3004C4DA5 /* ProfileCell.m */,
+				8395B5FA1BF843A3004C4DA5 /* ProfileCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				8375D5761BEEFDD400A57812 /* TweetsViewController.xib in Resources */,
 				8375D57E1BEF281100A57812 /* TweetCell.xib in Resources */,
 				83B8359B1BEBCD2B000CE248 /* LaunchScreen.storyboard in Resources */,
+				8395B5FC1BF843A3004C4DA5 /* ProfileCell.xib in Resources */,
 				8395B5F21BF82426004C4DA5 /* MenuViewController.xib in Resources */,
 				83C2FBD61BF000960088E501 /* NewTweetViewController.xib in Resources */,
 				833F29881BF2DD9A00462E54 /* Assets.xcassets in Resources */,
@@ -344,6 +353,7 @@
 				83E5233F1BEBD0B400C909D8 /* TwitterClient.m in Sources */,
 				8375D5791BEF204F00A57812 /* Color.m in Sources */,
 				83C2FBDA1BF034290088E501 /* TweetDetailsViewController.m in Sources */,
+				8395B5FB1BF843A3004C4DA5 /* ProfileCell.m in Sources */,
 				8395B5F61BF825A1004C4DA5 /* ProfileViewController.m in Sources */,
 				8395B5F11BF82426004C4DA5 /* MenuViewController.m in Sources */,
 				83B835901BEBCD2B000CE248 /* AppDelegate.m in Sources */,

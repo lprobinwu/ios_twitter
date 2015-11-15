@@ -12,8 +12,8 @@
 #import "Color.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 

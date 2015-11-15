@@ -32,6 +32,10 @@
 
     UIViewController *profileViewController = [[ProfileViewController alloc]init];
     UINavigationController *profileNVC = [[UINavigationController alloc] initWithRootViewController:profileViewController];
+    profileNVC.navigationBar.barTintColor = [UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+    profileNVC.navigationBar.tintColor = [UIColor whiteColor];
+    [profileNVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    profileNVC.navigationBar.translucent = NO;
     
     self.viewControllers = [NSArray arrayWithObjects:tweetsNVC, profileNVC, nil];
     

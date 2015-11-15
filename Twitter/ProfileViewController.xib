@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
+                <outlet property="backgroundImageView" destination="3nb-rH-CI6" id="d1K-fB-xn7"/>
+                <outlet property="tableView" destination="FIx-20-p9r" id="FzX-KK-Eyk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,9 +15,31 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3nb-rH-CI6">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="daW-4q-4sR"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FIx-20-p9r">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <animations/>
-            <color key="backgroundColor" red="1" green="0.76697839069999996" blue="0.87487851059999999" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="358" y="340"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3nb-rH-CI6" secondAttribute="trailing" id="CvT-3G-BOO"/>
+                <constraint firstItem="3nb-rH-CI6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FxA-nV-Ikf"/>
+                <constraint firstItem="FIx-20-p9r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wgo-g8-gnV"/>
+                <constraint firstItem="FIx-20-p9r" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hWj-aa-6DF"/>
+                <constraint firstItem="3nb-rH-CI6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hZ5-ov-U2T"/>
+                <constraint firstAttribute="bottom" secondItem="FIx-20-p9r" secondAttribute="bottom" id="ivB-Sh-eTg"/>
+                <constraint firstAttribute="trailing" secondItem="FIx-20-p9r" secondAttribute="trailing" id="uE1-1W-6fd"/>
+            </constraints>
+            <point key="canvasLocation" x="258" y="245"/>
         </view>
     </objects>
 </document>
