@@ -13,8 +13,9 @@
 #import "TweetDetailsViewController.h"
 #import "NewTweetViewController.h"
 #import "Color.h"
+#import "ProfileViewController.h"
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (nonatomic, strong) NSArray *tweets;
 
@@ -129,6 +130,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     [cell setTweet:self.tweets[indexPath.row]];
+    cell.delegate = self;
+    
     return cell;
 }
 
@@ -142,6 +145,12 @@
     [self.navigationController pushViewController:vc animated:YES];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)onProfile:(User *)user {
+    ProfileViewController *pvc = [[ProfileViewController alloc] init];
+    [pvc setUser:user];
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
