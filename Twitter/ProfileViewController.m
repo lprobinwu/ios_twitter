@@ -24,6 +24,15 @@
 
 @implementation ProfileViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self customizeLeftNavBarButtons];
+        [self customizeRightNavBarButtons];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -42,6 +51,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.estimatedRowHeight = 155;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -57,6 +67,25 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
+- (void)customizeLeftNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Log Out"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:nil];
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"New"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:nil];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
 
 - (void)refreshProfile {
     [[TwitterClient sharedInstance] userTimelineWithParams:nil user:self.user completion:^(NSArray *tweets, NSError *error) {

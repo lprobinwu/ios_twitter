@@ -32,6 +32,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
     UIViewController *tweetsViewController = [[TweetsViewController alloc]init];
     UINavigationController *tweetsNVC = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
@@ -53,12 +54,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];    
+    if (indexPath.row < 3) {
+        [self.hamburgerViewController setContentViewController:self.viewControllers[indexPath.row]];
+    } else {
+        [self.hamburgerViewController setContentViewController:nil];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,6 +76,18 @@
             break;
         case 2:
             cell.textLabel.text = @"Mentions";
+            break;
+        case 3:
+            cell.textLabel.text = @"Notifications";
+            break;
+        case 4:
+            cell.textLabel.text = @"Messages";
+            break;
+        case 5:
+            cell.textLabel.text = @"My Likes";
+            break;
+        case 6:
+            cell.textLabel.text = @"Find People";
             break;
     }
     

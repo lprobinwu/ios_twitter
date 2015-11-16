@@ -60,15 +60,17 @@
 }
 
 - (void) setContentViewController:(UIViewController *)contentViewController {
-    [self hideContentController:_contentViewController];
-    
-    _contentViewController = contentViewController;
-    
-    [self.view layoutIfNeeded];
-    
-    [self.contentViewController willMoveToParentViewController:self];
-    [self.contentView addSubview:contentViewController.view];
-    [self.contentViewController didMoveToParentViewController:self];
+    if (contentViewController != nil) {
+        [self hideContentController:_contentViewController];
+        
+        _contentViewController = contentViewController;
+        
+        [self.view layoutIfNeeded];
+        
+        [self.contentViewController willMoveToParentViewController:self];
+        [self.contentView addSubview:contentViewController.view];
+        [self.contentViewController didMoveToParentViewController:self];
+    }
     
     [UIView animateWithDuration:0.3 animations:^{
         // close

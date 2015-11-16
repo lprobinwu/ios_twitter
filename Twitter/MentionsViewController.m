@@ -20,6 +20,15 @@
 
 @implementation MentionsViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self customizeLeftNavBarButtons];
+        [self customizeRightNavBarButtons];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -43,6 +52,7 @@
 - (void)setUpTableView {
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -60,6 +70,25 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
+- (void)customizeLeftNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Log Out"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:nil];
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"New"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:nil];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.tweets.count;
