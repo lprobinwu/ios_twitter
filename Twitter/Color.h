@@ -13,5 +13,6 @@
 
 + (UIColor *)twitterBlue;
 + (UIColor *)limeGreen;
++ (UIColor *)lightWhite;
 
 @end

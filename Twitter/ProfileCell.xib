@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="318" height="195"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="318" height="194.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="318" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWEETS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pr9-tY-i7t">
@@ -47,7 +47,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdq-pG-XgD">
-                        <rect key="frame" x="13" y="72" width="90.5" height="20.5"/>
+                        <rect key="frame" x="13" y="72" width="91" height="21"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="pR9-WD-fJC"/>
@@ -62,7 +62,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjX-me-lAR">
-                        <rect key="frame" x="13" y="95.5" width="75.5" height="15.5"/>
+                        <rect key="frame" x="13" y="96" width="76" height="15"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="y5f-z0-drU"/>

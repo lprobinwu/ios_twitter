@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83068DA81BFAC40B0075037D /* HeaderProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83068DA61BFAC40B0075037D /* HeaderProfileCell.m */; settings = {ASSET_TAGS = (); }; };
+		83068DA91BFAC40B0075037D /* HeaderProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83068DA71BFAC40B0075037D /* HeaderProfileCell.xib */; settings = {ASSET_TAGS = (); }; };
 		830DCC7A1BEC8BED00338AA5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DCC791BEC8BED00338AA5 /* Tweet.m */; settings = {ASSET_TAGS = (); }; };
 		830DCC7D1BEC8BFD00338AA5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DCC7C1BEC8BFD00338AA5 /* User.m */; settings = {ASSET_TAGS = (); }; };
 		833F29881BF2DD9A00462E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833F29871BF2DD9A00462E54 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
@@ -42,6 +44,9 @@
 		17B3EC8D96B4C083892912BC /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0B3B2AEBF193BE044343D7 /* libPods-Twitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E7A0EA35EA20AB1F09A865 /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
+		83068DA51BFAC40B0075037D /* HeaderProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderProfileCell.h; sourceTree = "<group>"; };
+		83068DA61BFAC40B0075037D /* HeaderProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderProfileCell.m; sourceTree = "<group>"; };
+		83068DA71BFAC40B0075037D /* HeaderProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderProfileCell.xib; sourceTree = "<group>"; };
 		830DCC781BEC8BED00338AA5 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		830DCC791BEC8BED00338AA5 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		830DCC7B1BEC8BFD00338AA5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -140,6 +145,9 @@
 				8395B5F81BF843A3004C4DA5 /* ProfileCell.h */,
 				8395B5F91BF843A3004C4DA5 /* ProfileCell.m */,
 				8395B5FA1BF843A3004C4DA5 /* ProfileCell.xib */,
+				83068DA51BFAC40B0075037D /* HeaderProfileCell.h */,
+				83068DA61BFAC40B0075037D /* HeaderProfileCell.m */,
+				83068DA71BFAC40B0075037D /* HeaderProfileCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 				8395B5ED1BF822C2004C4DA5 /* HamburgerViewController.xib in Resources */,
 				8375D5761BEEFDD400A57812 /* TweetsViewController.xib in Resources */,
 				8375D57E1BEF281100A57812 /* TweetCell.xib in Resources */,
+				83068DA91BFAC40B0075037D /* HeaderProfileCell.xib in Resources */,
 				83B8359B1BEBCD2B000CE248 /* LaunchScreen.storyboard in Resources */,
 				8395B5FC1BF843A3004C4DA5 /* ProfileCell.xib in Resources */,
 				8395B5F21BF82426004C4DA5 /* MenuViewController.xib in Resources */,
@@ -362,6 +371,7 @@
 				83E5233F1BEBD0B400C909D8 /* TwitterClient.m in Sources */,
 				8375D5791BEF204F00A57812 /* Color.m in Sources */,
 				83C2FBDA1BF034290088E501 /* TweetDetailsViewController.m in Sources */,
+				83068DA81BFAC40B0075037D /* HeaderProfileCell.m in Sources */,
 				8395B5FB1BF843A3004C4DA5 /* ProfileCell.m in Sources */,
 				8395B5F61BF825A1004C4DA5 /* ProfileViewController.m in Sources */,
 				8395B5F11BF82426004C4DA5 /* MenuViewController.m in Sources */,
